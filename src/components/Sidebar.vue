@@ -56,6 +56,18 @@ export default {
       // sidebar: [], // 侧边栏
     };
   },
+  watch: {
+    children: {
+      handler(route) {
+
+        // 添加侧边栏显示子路由标识(自动打开折叠)
+        this.addToggleMark()
+
+      },
+      immediate: true,
+    }
+
+  },
   computed: {
     ...mapState([
       'curRoute', // 当前路由
@@ -72,12 +84,9 @@ export default {
   },
   mounted() {
 
-    // 添加侧边栏显示子路由标识
-    this.addToggleMark()
-
   },
   methods: {
-    // 添加侧边栏显示子路由标识
+    // 添加侧边栏显示子路由标识(自动打开折叠)
     addToggleMark () {
 
       // 找到当前子路由的上一级路由的name
