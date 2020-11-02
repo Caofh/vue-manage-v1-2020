@@ -160,13 +160,12 @@ export default {
 
         /* 
           根据是否有子路由来决定是否打开转场效果。
-          有子路由时，才开启转场效果，600ms后关闭，避免切换nav导航时，转场效果导致页面闪动
+          有子路由时，才开启转场效果，否则关闭转场效果，避免切换nav导航时，转场效果导致页面闪动
         */
         if (this.allRouters[i].children && this.allRouters[i].children.length) {
           this.setAni(true)
-          setTimeout(() => {
-            this.setAni(false)
-          }, 400)
+        } else {
+           this.setAni(false)
         }
 
       }
