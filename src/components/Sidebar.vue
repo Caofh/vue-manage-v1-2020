@@ -7,6 +7,7 @@
            height: item.show && item.children && item.children.length ? (item.children.length + 1) * 46 + 'px' : '46px'
          }"
          v-for="(item, index) in children" :key="index"
+         v-if="!item.hidden"
          >
 
       <div :class="['title', 'c-flex-x-end', {'selected': curRoute.name === item.name}]"
