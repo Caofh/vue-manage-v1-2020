@@ -7,19 +7,22 @@
            height: item.show && item.children && item.children.length ? (item.children.length + 1) * 46 + 'px' : '46px'
          }"
          v-for="(item, index) in children" :key="index"
-         v-if="!item.hidden"
          >
 
-      <div :class="['title', 'c-flex-x-end', {'selected': curRoute.name === item.name}]"
-           @click="goPage(item)">
+      <template v-if="!item.hidden">
 
-        {{ item.meta && item.meta.title ? item.meta.title : '' }}
+        <div :class="['title', 'c-flex-x-end', {'selected': curRoute.name === item.name}]"
+            @click="goPage(item)">
 
-        <img v-if="item.children && item.children.length" :class="['icon-down', {'up': item.show}]" src="@/assets/img/odc/icon-down.png">
-      </div>
+          {{ item.meta && item.meta.title ? item.meta.title : '' }}
 
-       <!-- 子路由(自己引自己实现递归，直接引用export default中的name属性即可) -->
-      <Sidebar v-if="item.children && item.children.length" :children="item.children"></Sidebar>
+          <img v-if="item.children && item.children.length" :class="['icon-down', {'up': item.show}]" src="@/assets/img/odc/icon-down.png">
+        </div>
+
+        <!-- 子路由(自己引自己实现递归，直接引用export default中的name属性即可) -->
+        <Sidebar v-if="item.children && item.children.length" :children="item.children"></Sidebar>
+
+      </template>
 
     </div>
 
