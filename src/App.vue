@@ -117,10 +117,10 @@ body {
       align-items: flex-start;
 
       .main-transition {
-        width: 100%;
+        box-sizing: border-box;
+        width: calc(100% - 200px);
 
         .container {
-          // width: calc(100% - 200px);
           text-align: left;
           padding: 10px;
 
