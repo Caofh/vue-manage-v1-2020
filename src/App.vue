@@ -8,7 +8,7 @@
       <Sidebar v-if="children && children.length" :children="children"></Sidebar>
 
       <!-- 主内容(ani:本标识为选择是否显示页面切换转场效果) -->
-      <transition-group v-if="ani" class="main-transition" mode="out-in" name="fade-transform">
+      <transition-group v-if="ani" :class="['main-transition', {'has-sidebar': children && children.length}]" mode="out-in" name="fade-transform">
         <router-view v-if="newPage" :key="key" class="container" />
       </transition-group>
       <div v-else-if="newPage" class="main-transition">
@@ -118,7 +118,12 @@ body {
 
       .main-transition {
         box-sizing: border-box;
-        width: calc(100% - 200px);
+        width: 100%;
+
+        &.has-sidebar {
+          width: calc(100% - 240px);
+          margin-left: 20px;
+        }
 
         .container {
           text-align: left;
