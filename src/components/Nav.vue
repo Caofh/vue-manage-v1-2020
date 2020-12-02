@@ -9,7 +9,7 @@
 
       <!-- nav核心部分 -->
       <div class="nav-part c-flex-x-start">
-        <div :class="['nav-item', {'selected': curRoute.matched[0].name === item.name, 'hidden': !item.name}]" 
+        <div :class="['nav-item', {'selected': curRoute.matched && curRoute.matched[0].name === item.name, 'hidden': !item.name}]" 
             v-for="(item, index) in allRouters" :key="index"
             v-if="!item.hidden" 
             @click="goPage(item, index)"
@@ -23,8 +23,8 @@
         <div class="under-line" 
               v-if="navLineInfo"
             :style="{
-              width: navLineInfo[activeIndex].width + 'px', 
-              left: navLineInfo[activeIndex].left + 'px'
+              width: navLineInfo[activeIndex] && navLineInfo[activeIndex].width ? navLineInfo[activeIndex].width + 'px' : '0', 
+              left: navLineInfo[activeIndex] && navLineInfo[activeIndex].left ? navLineInfo[activeIndex].left + 'px' : '0'
             }">
         </div>
 
