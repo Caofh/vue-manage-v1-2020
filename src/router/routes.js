@@ -33,7 +33,7 @@ const routes = [
         name: 'Odc',
         redirect: '/odc/activity1',
         component: EmptyLayout,
-        hidden: false, // 当前页面是否展示到nav中
+        // hidden: false, // 当前页面是否展示到nav中
         meta: {
             title: 'nav1',
         },
@@ -44,7 +44,7 @@ const routes = [
                 redirect: '/odc/activity1/activity1-1',
                 component: EmptyLayout,
                 meta: {
-                  title: "活动管理1",
+                    title: "活动管理1",
                 },
                 children: [
                     {
@@ -52,7 +52,7 @@ const routes = [
                         name: 'activity1-1',
                         component: Odc,
                         meta: {
-                          title: "活动管理1-1",
+                            title: "活动管理1-1",
                         }
                     },
                     {
@@ -60,15 +60,18 @@ const routes = [
                         name: 'activity2-2',
                         component: Home,
                         meta: {
-                          title: "活动管理2-2",
+                            title: "活动管理2-2",
                         }
                     },
                     {
                         path: 'activity2-3',
                         name: 'activity2-3',
+                        hidden: true,
                         component: Home,
                         meta: {
-                          title: "活动管理2-3",
+                            title: "活动管理2-3",
+                            showBack: true,
+                            selectedRouteName: 'activity1-1'
                         }
                     },
                 ]
@@ -78,7 +81,7 @@ const routes = [
                 name: 'activity2',
                 component: Home,
                 meta: {
-                  title: "活动管理2",
+                    title: "活动管理2",
                 }
             },
         ]
@@ -99,7 +102,7 @@ const routes = [
                 redirect: '/smbUserInfo/smb/smb-1',
                 component: EmptyLayout,
                 meta: {
-                  title: "smb",
+                    title: "smb",
                 },
                 children: [
                     {
@@ -107,7 +110,7 @@ const routes = [
                         name: 'smb-1',
                         component: Home,
                         meta: {
-                          title: "smb-1",
+                            title: "smb-1",
                         }
                     },
                     {
@@ -115,7 +118,7 @@ const routes = [
                         name: 'smb-2',
                         component: Home,
                         meta: {
-                          title: "smb-2",
+                            title: "smb-2",
                         }
                     },
                 ]
@@ -126,7 +129,7 @@ const routes = [
                 redirect: '/smbUserInfo/smb1/smb1-1',
                 component: EmptyLayout,
                 meta: {
-                  title: "smb1",
+                    title: "smb1",
                 },
                 children: [
                     {
@@ -134,7 +137,7 @@ const routes = [
                         name: 'smb1-1',
                         component: Home,
                         meta: {
-                          title: "smb1-1",
+                            title: "smb1-1",
                         }
                     },
                     {
@@ -142,7 +145,7 @@ const routes = [
                         name: 'smb1-2',
                         component: Home,
                         meta: {
-                          title: "smb1-2",
+                            title: "smb1-2",
                         }
                     },
                 ]
@@ -150,9 +153,9 @@ const routes = [
             {
                 path: 'smb2',
                 name: 'smb2',
-                component:Home,
+                component: Home,
                 meta: {
-                  title: "smb2",
+                    title: "smb2",
                 }
             },
         ]

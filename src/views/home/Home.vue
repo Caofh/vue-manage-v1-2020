@@ -3,31 +3,28 @@
     home
 
     <router-view />
-
   </div>
 </template>
 
 <script>
-
 // import config from '@/config/gateway.config'
 // import { initAsyn } from '@/utils/loadJs'
 // import $ from 'zepto'
 // console.log($)
 // console.log(config)
 
-import { listPage } from '@/api/pages/home/home'
+import { listPage } from "@/api/pages/home/home";
+
+// 工具函数
+import { pushPage } from "@/utils/index.js";
 
 export default {
-  name: 'Home',
-  components: {
-
+  name: "Home",
+  components: {},
+  data() {
+    return {};
   },
-  data () {
-    return {
-
-    }
-  },
-  created () {
+  created() {
     // initAsyn(['moment' 'eruda'], () => {
     //   console.log(moment)
     //   console.log(456)
@@ -35,18 +32,21 @@ export default {
     // console.log(123)
     //
     // console.log($)
-
     // listPage().then((data) => {
     //   console.log(data)
     // })
-  }
-}
+  },
+  methods: {
+    goPage() {
+      pushPage(this, {
+        name: "activity2-3",
+      });
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-  .home {
-
-  }
-
-
+.home {
+}
 </style>
