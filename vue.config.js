@@ -115,6 +115,12 @@ module.exports = {
                 name: '[name].[hash:8].[ext]'
             }))
 
+        // underscoreTemplate模版引擎
+        config.module
+            .rule('tpl')
+            .test(/\.tpl$/i)
+            .use('underscore-template-loader')
+            .loader('underscore-template-loader')
 
         // npm run report；打印app.js的模块报告，查看各个模块；
         if (processEnv === 'report') {

@@ -3,6 +3,21 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+// 引入elementUi
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+Vue.use(ElementUI);
+
+// 扩展全局自定义指令
+import directives from '@/directives/index'
+Object.keys(directives).map(key => {
+  Vue.directive(key, directives[key])
+})
+
+// 扩展常用公共方法
+import elementUiDialog from '@/utils/elementUiDialog.js'
+Object.assign(Vue.prototype, elementUiDialog)
+
 import 'normalize.css'; // 引用基础兼容性css，normalize.css；文档：https://github.com/necolas/normalize.css
 import './assets/css/style/index.scss'; // 引用全局样式类
 

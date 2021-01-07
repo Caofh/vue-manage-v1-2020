@@ -1,9 +1,13 @@
 /* eslint-disable */
 
+const protocol = window.location.protocol // 当前协议
+const host = protocol + '//' + window.location.host // 当前host
+
 // 开发环境地址(npm run serve)
 const devHost = {
   // 接口地址域名相关
   baseApi: 'http://tpdoc.cn:3001',
+  pluginsHost: '', // 第三方资源地址
 
 }
 
@@ -11,6 +15,7 @@ const devHost = {
 const testHost = {
   // 接口地址域名相关
   baseApi: 'http://tpdoc.cn:3001',
+  pluginsHost: `${host}`, // 第三方资源地址
 
 }
 
@@ -18,6 +23,7 @@ const testHost = {
 const proHost = {
   // 接口地址域名相关
   baseApi: 'http://tpdoc.cn:3001',
+  pluginsHost: `${host}`, // 第三方资源地址
 
 }
 

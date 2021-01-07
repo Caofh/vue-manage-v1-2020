@@ -4,162 +4,133 @@
 // 公用子路由侧边栏
 const EmptyLayout = () => import(/* webpackChunkName: "EmptyLayout" */ '@/components/EmptyLayout.vue') // webpack的魔法注释，将拆分出的js命名为EmptyLayout
 
-const Home = () => import(/* webpackChunkName: "home" */ '@/views/home/Home.vue') // webpack的魔法注释，将拆分出的js命名为home
+// elementUi
+const Button = () => import(/* webpackChunkName: "Layout" */ '@/views/elementUi/button/Button.vue') // webpack的魔法注释，将拆分出的js命名为Layout
+const Table = () => import(/* webpackChunkName: "Table" */ '@/views/elementUi/table/Table.vue') // webpack的魔法注释，将拆分出的js命名为Table
+const Role = () => import(/* webpackChunkName: "Role" */ '@/views/elementUi/table/role/Role.vue') // webpack的魔法注释，将拆分出的js命名为Role
+const LineEdit = () => import(/* webpackChunkName: "LineEdit" */ '@/views/elementUi/table/LineEdit.vue') // webpack的魔法注释，将拆分出的js命名为LineEdit
+const Map = () => import(/* webpackChunkName: "Map" */ '@/views/elementUi/map/Map.vue') // webpack的魔法注释，将拆分出的js命名为Map
+const Form = () => import(/* webpackChunkName: "Form" */ '@/views/elementUi/form/Form.vue') // webpack的魔法注释，将拆分出的js命名为Form
+const Loading = () => import(/* webpackChunkName: "Loading" */ '@/views/elementUi/loading/Loading.vue') // webpack的魔法注释，将拆分出的js命名为Loading
 
-const Odc = () => import(/* webpackChunkName: "odc" */ '@/views/odc/Odc.vue') // webpack的魔法注释，将拆分出的js命名为odc
-
-const SmbUserInfo = () => import(/* webpackChunkName: "smbUserInfo" */ '@/views/smbUserInfo/SmbUserInfo.vue') // webpack的魔法注释，将拆分出的js命名为smbUserInfo
-
-
-
+// 项目常用方案
+const Dialog = () => import(/* webpackChunkName: "Dialog" */ '@/views/self/Dialog.vue') // webpack的魔法注释，将拆分出的js命名为Dialog
+const WordCloud = () => import(/* webpackChunkName: "WordCloud" */ '@/views/self/WordCloud.vue') // webpack的魔法注释，将拆分出的js命名为WordCloud
 
 const routes = [
 
     {
         path: "/",
-        redirect: '/home',
+        redirect: '/elementUi',
     },
 
     {
-        path: '/home',
-        name: 'Home',
-        component: Home,
-        meta: {
-            title: '首页',
-        },
-    },
-    {
-        path: '/odc',
-        name: 'Odc',
-        redirect: '/odc/activity1',
+        path: '/elementUi',
+        name: 'elementUi',
+        redirect: '/elementUi/button',
         component: EmptyLayout,
-        // hidden: false, // 当前页面是否展示到nav中
         meta: {
-            title: 'nav1',
+            title: 'ElementUi',
         },
         children: [
             {
-                path: 'activity1',
-                name: 'activity1',
-                redirect: '/odc/activity1/activity1-1',
+                path: 'button',
+                name: 'button',
+                component: Button,
+                meta: {
+                    title: "button及icon",
+                }
+            },
+            {
+                path: 'table',
+                name: 'table',
+                redirect: '/elementUi/layout/table/base',
                 component: EmptyLayout,
                 meta: {
-                    title: "活动管理1",
+                    title: "表格",
                 },
                 children: [
                     {
-                        path: 'activity1-1',
-                        name: 'activity1-1',
-                        component: Odc,
+                        path: 'base',
+                        name: 'base',
+                        component: Table,
                         meta: {
-                            title: "活动管理1-1",
+                            title: "基础表格",
                         }
                     },
                     {
-                        path: 'activity2-2',
-                        name: 'activity2-2',
-                        component: Home,
+                        path: 'role',
+                        name: 'role',
+                        component: Role,
                         meta: {
-                            title: "活动管理2-2",
-                        }
+                            title: "角色管理",
+                        },
                     },
                     {
-                        path: 'activity2-3',
-                        name: 'activity2-3',
-                        hidden: true,
-                        component: Home,
+                        path: 'lineEdit',
+                        name: 'lineEdit',
+                        component: LineEdit,
                         meta: {
-                            title: "活动管理2-3",
-                            showBack: true,
-                            selectedRouteName: 'activity1-1'
-                        }
+                            title: "行内编辑",
+                        },
                     },
                 ]
             },
             {
-                path: 'activity2',
-                name: 'activity2',
-                component: Home,
+                path: 'map',
+                name: 'map',
+                component: Map,
                 meta: {
-                    title: "活动管理2",
+                    title: "地图",
                 }
             },
+            {
+                path: 'form',
+                name: 'form',
+                component: Form,
+                meta: {
+                    title: "表单",
+                }
+            },
+            {
+                path: 'loading',
+                name: 'loading',
+                component: Loading,
+                meta: {
+                    title: "loading",
+                }
+            },
+
         ]
     },
     {
-        path: '/smbUserInfo',
-        name: 'SmbUserInfo',
-        // component: SmbUserInfo,
+        path: '/self',
+        name: 'self',
+        redirect: '/self/dialog',
         component: EmptyLayout,
-        hidden: false, // 当前页面是否展示到nav中
         meta: {
-            title: 'nav2',
+            title: '项目常用方案',
         },
         children: [
             {
-                path: 'smb',
-                name: 'smb',
-                redirect: '/smbUserInfo/smb/smb-1',
-                component: EmptyLayout,
+                path: 'dialog',
+                name: 'dialog',
+                component: Dialog,
                 meta: {
-                    title: "smb",
+                    title: "弹窗",
                 },
-                children: [
-                    {
-                        path: 'smb-1',
-                        name: 'smb-1',
-                        component: Home,
-                        meta: {
-                            title: "smb-1",
-                        }
-                    },
-                    {
-                        path: 'smb-2',
-                        name: 'smb-2',
-                        component: Home,
-                        meta: {
-                            title: "smb-2",
-                        }
-                    },
-                ]
             },
             {
-                path: 'smb1',
-                name: 'smb1',
-                redirect: '/smbUserInfo/smb1/smb1-1',
-                component: EmptyLayout,
+                path: 'wordCloud',
+                name: 'wordCloud',
+                component: WordCloud,
                 meta: {
-                    title: "smb1",
+                    title: "词云",
                 },
-                children: [
-                    {
-                        path: 'smb1-1',
-                        name: 'smb1-1',
-                        component: Home,
-                        meta: {
-                            title: "smb1-1",
-                        }
-                    },
-                    {
-                        path: 'smb1-2',
-                        name: 'smb1-2',
-                        component: Home,
-                        meta: {
-                            title: "smb1-2",
-                        }
-                    },
-                ]
-            },
-            {
-                path: 'smb2',
-                name: 'smb2',
-                component: Home,
-                meta: {
-                    title: "smb2",
-                }
             },
         ]
     },
+
 ]
 
 export default routes
